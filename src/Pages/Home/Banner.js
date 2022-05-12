@@ -3,7 +3,7 @@ import img from '../../Images/images/chair.png'
 
 const Banner = () => {
     return (
-        <div class="hero min-h-screen bg-base-200 pb-0 ">
+        <div class="hero min-h-screen  pb-0 ">
             <div class="hero-content flex-col lg:flex-row-reverse">
                 <img src={img} alt='' class="max-w-sm rounded-lg shadow-2xl w-11/12" />
                 <div >

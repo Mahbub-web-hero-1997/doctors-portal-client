@@ -8,10 +8,10 @@ const Navbar = () => {
         <li><Link to='/reviews'>Reviews</Link></li>
         <li><Link to='/about'>About</Link></li>
         <li><Link to='/contact'>Contact</Link></li>
-        <li><Link to='/login'>Login</Link></li>
+
     </>
     return (
-        <div class="navbar bg-base-100 sticky top-0 z-10">
+        <div class="navbar sticky top-0 z-10 bg-base-200">
             <div class="navbar-start">
                 <div class="dropdown ">
                     <label tabindex="0" class="btn btn-ghost lg:hidden">
@@ -29,7 +29,7 @@ const Navbar = () => {
                 </ul>
             </div>
             <div class="navbar-end">
-                <a class="btn">Get started</a>
+                <Link className='btn' to='/login'>Login</Link>
             </div>
         </div>
     );
