@@ -14,7 +14,8 @@ module.exports = {
           "base-100": "#ffffff",
         },
       },
-
+      // "dark",
+      // "cupcake",
     ],
   },
   plugins: [require("daisyui")],
