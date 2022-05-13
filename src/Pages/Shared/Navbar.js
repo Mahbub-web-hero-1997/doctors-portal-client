@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ButtonPrimary from './ButtonPrimary';
 
 const Navbar = () => {
     const menuItems = <>
@@ -11,7 +12,7 @@ const Navbar = () => {
 
     </>
     return (
-        <div class="navbar sticky top-0 z-10 bg-base-200">
+        <div class="navbar sticky top-0 z-10 bg-base-200 mx-auto">
             <div class="navbar-start">
                 <div class="dropdown ">
                     <label tabindex="0" class="btn btn-ghost lg:hidden">
@@ -29,7 +30,7 @@ const Navbar = () => {
                 </ul>
             </div>
             <div class="navbar-end">
-                <Link className='btn' to='/login'>Login</Link>
+                <ButtonPrimary>Login</ButtonPrimary>
             </div>
         </div>
     );
