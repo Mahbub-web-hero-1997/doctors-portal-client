@@ -13,7 +13,7 @@ const Service = ({ service, setTreatment }) => {
                     </>
                 }
                 <div class="card-actions justify-end">
-                    <label onClick={() => setTreatment(service)} disabled={slots.length === 0} for="Booking_Modal" class=" btn btn-primary">Book-Now</label>
+                    <label onClick={() => setTreatment(service)} disabled={slots.length === 0} for="Booking_Modal" class=" btn btn-primary text-white uppercase font-bold bg-gradient-to-r from-secondary to-primary">Book-Now</label>
                     {/* <ButtonPrimary >Book-Now</ButtonPrimary> */}
                 </div>
             </div>
