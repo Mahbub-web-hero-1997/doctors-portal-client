@@ -19,12 +19,12 @@ const Services = () => {
                 <Service serviceTitle='Cavity Filling' serviceDetail='Lorem Ipsum is simply dummy printing and typesetting indust Ipsum has been the' img={cavity}></Service>
                 <Service serviceTitle='Teeth Whitening' serviceDetail='Lorem Ipsum is simply dummy printing and typesetting indust Ipsum has been the' img={whitening}></Service>
             </div>
-            <div class="hero w-11/12 mx-auto mt-5">
-                <div class="hero-content flex-col lg:flex-row p-0 m-0">
-                    <img alt='' src={treatment} class="max-w-sm rounded-sm shadow-2xl w-11/12  " />
+            <div className="hero w-11/12 mx-auto mt-5">
+                <div className="hero-content flex-col lg:flex-row p-0 m-0">
+                    <img alt='' src={treatment} className="max-w-sm rounded-sm shadow-2xl w-11/12  " />
                     <div className='ml-20'>
-                        <h1 class="text-5xl font-bold">Exceptional Dental Care, on Your Terms</h1>
-                        <p class="py-6">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsumis that it has a more-or-less normal distribution of letters,as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page</p>
+                        <h1 className="text-5xl font-bold">Exceptional Dental Care, on Your Terms</h1>
+                        <p className="py-6">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsumis that it has a more-or-less normal distribution of letters,as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page</p>
                         <ButtonPrimary>Get-Started</ButtonPrimary>
                     </div>
                 </div>
