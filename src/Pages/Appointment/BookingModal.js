@@ -1,9 +1,12 @@
 import { format } from 'date-fns';
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 
 
 const BookingModal = ({ treatment, date, setTreatment }) => {
     const { _id, name, slots, } = treatment;
+    const [user] = useAuthState(auth);
     const handleBooking = event => {
         event.preventDefault()
         const slot = event.target.slot.value;
@@ -19,10 +22,14 @@ const BookingModal = ({ treatment, date, setTreatment }) => {
                     <form onSubmit={handleBooking} className='grid grid-cols-1 gap-3 mt-4'>
                         <input type="text" value={format(date, 'PP')} className="input input-bordered w-full" disabled />
                         <select name='slot' className="select select-bordered w-full">
-                            {slots.map(slot => <option value={slot}>{slot}</option>)}
+                            {slots.map((slot, index) =>
+                                < option
+                                    key={index}
+                                    value={slot} > {slot}</option>
+                            )}
                         </select>
-                        <input type="text" placeholder="Your Name" name='name' className="input input-bordered w-full " />
-                        <input type="email" placeholder="Email Address" name='email' className="input input-bordered w-full " />
+                        <input type="text" value={user?.displayName} disabled name='name' className="input input-bordered w-full " />
+                        <input type="email" value={user?.email} disabled name='email' className="input input-bordered w-full " />
                         <input type="number" name='phone' placeholder="Phone Number" className="input input-bordered w-full " />
                         <input type="submit" value="Confirm" className='btn btn-primary text-white font-bold uppercase block w-full ' />
                     </form>
@@ -32,7 +39,7 @@ const BookingModal = ({ treatment, date, setTreatment }) => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 };
 
