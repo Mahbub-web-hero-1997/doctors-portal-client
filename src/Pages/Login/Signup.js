@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import Loading from '../Shared/Loading';
 import { Link } from 'react-router-dom';
 
-const Login = () => {
+const Signup = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     // Login with email and Password
     const [
@@ -37,7 +37,7 @@ const Login = () => {
         <div className='flex justify-center items-center h-screen'>
             <div className="card w-96 bg-base-100 shadow-xl">
                 <div className="card-body">
-                    <h2 className="text-center text-2xl font-bold text-secondary">Login!</h2>
+                    <h2 className="text-center text-2xl font-bold text-secondary">Signup!</h2>
                     <form onSubmit={handleSubmit(onSubmit)}>
 
                         <div class="form-control w-full max-w-xs">
@@ -91,7 +91,7 @@ const Login = () => {
                         {signInError}
                         <input className="btn btn-primary bg-gradient-to-r from-secondary to-primary text-white font-bold w-full " type="submit" value='Login' />
                     </form>
-                    <p><small>New to doctors portal? <Link className='text-primary' to='/signup'>Create and account!</Link></small></p>
+                    <p><small>Already have an account?<Link className='text-primary ml-1' to='/login'>Signup!</Link></small></p>
 
                     <div className="divider">OR</div>
                     <button onClick={handleGoogleSignIn} className="btn font-bold text-white btn-primary bg-gradient-to-r from-secondary to-primary">Continue With Google</button>
@@ -101,4 +101,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Signup;
