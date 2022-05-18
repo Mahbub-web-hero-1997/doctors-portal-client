@@ -18,7 +18,6 @@ const Login = () => {
         console.log("User Data", data.email, data.password);
         signInWithEmailAndPassword(data.email, data.password)
     };
-    let signInError;
     // Login with Google
     const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
     const handleGoogleSignIn = () => {
@@ -26,9 +25,6 @@ const Login = () => {
     }
     if (loading || googleLoading) {
         return <Loading></Loading>
-    }
-    if (error || googleError) {
-        return <p>{error?.message || googleError?.message}</p>
     }
     if (user || googleUser) {
         console.log(user || googleUser);
@@ -85,10 +81,14 @@ const Login = () => {
                             <label class="label">
                                 {errors.password?.type === 'required' && <span class="label-text-alt text-red-500">{errors.password.message}</span>}
                                 {errors.password?.type === 'minLength' && <span class="label-text-alt text-red-500">{errors.password.message}</span>}
-
                             </label>
                         </div>
-                        {signInError}
+                        {
+                            error && <p className='text-red-500 mb-2'>Your Email or Password in Incorrect!</p>
+                        }
+                        {
+                            googleError && <p>{googleError.message}</p>
+                        }
                         <input className="btn btn-primary bg-gradient-to-r from-secondary to-primary text-white font-bold w-full " type="submit" value='Login' />
                     </form>
                     <p><small>New to doctors portal? <Link className='text-primary' to='/signup'>Create and account!</Link></small></p>

@@ -1,5 +1,7 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
+import auth from '../../firebase.init';
 import Login from '../Login/Login';
 import ButtonPrimary from './ButtonPrimary';
 
@@ -10,8 +12,8 @@ const Navbar = () => {
         <li><Link to='/reviews'>Reviews</Link></li>
         <li><Link to='/about'>About</Link></li>
         <li><Link to='/contact'>Contact</Link></li>
-
     </>
+    const [user] = useAuthState(auth)
     return (
         <div className="navbar sticky top-0 z-10 bg-base-200 mx-auto">
             <div className="navbar-start">
@@ -30,9 +32,13 @@ const Navbar = () => {
                     {menuItems}
                 </ul>
             </div>
-            <div className="navbar-end">
-                <ButtonPrimary><Link to='/login' element={<Login></Login>}>Login</Link></ButtonPrimary>
-            </div>
+            {
+                user ? <div className="navbar-end">
+                    <ButtonPrimary><Link to='/login' element={<Login></Login>}>Log out</Link></ButtonPrimary>
+                </div> : <div className="navbar-end">
+                    <ButtonPrimary><Link to='/login' element={<Login></Login>}>Login</Link></ButtonPrimary>
+                </div>
+            }
         </div>
     );
 };
