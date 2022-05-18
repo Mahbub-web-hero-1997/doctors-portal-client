@@ -1,8 +1,10 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Login from '../Login/Login';
+import Signup from '../Login/Signup';
 import ButtonPrimary from './ButtonPrimary';
 
 const Navbar = () => {
@@ -13,7 +15,10 @@ const Navbar = () => {
         <li><Link to='/about'>About</Link></li>
         <li><Link to='/contact'>Contact</Link></li>
     </>
-    const [user] = useAuthState(auth)
+    const [user] = useAuthState(auth);
+    const handleSignOut = () => {
+        signOut(auth);
+    }
     return (
         <div className="navbar sticky top-0 z-10 bg-base-200 mx-auto">
             <div className="navbar-start">
@@ -34,7 +39,7 @@ const Navbar = () => {
             </div>
             {
                 user ? <div className="navbar-end">
-                    <ButtonPrimary><Link to='/login' element={<Login></Login>}>Log out</Link></ButtonPrimary>
+                    <ButtonPrimary><Link to='/login' onClick={handleSignOut} element={<Signup></Signup>}>Log out</Link></ButtonPrimary>
                 </div> : <div className="navbar-end">
                     <ButtonPrimary><Link to='/login' element={<Login></Login>}>Login</Link></ButtonPrimary>
                 </div>

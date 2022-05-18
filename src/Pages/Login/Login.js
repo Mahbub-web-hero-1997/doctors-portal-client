@@ -3,11 +3,10 @@ import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-fireba
 import auth from '../../firebase.init';
 import { useForm } from "react-hook-form";
 import Loading from '../Shared/Loading';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
-    // Login with email and Password
     const [
         signInWithEmailAndPassword,
         user,
@@ -18,16 +17,19 @@ const Login = () => {
         console.log("User Data", data.email, data.password);
         signInWithEmailAndPassword(data.email, data.password)
     };
-    // Login with Google
     const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
     const handleGoogleSignIn = () => {
         signInWithGoogle(googleUser)
     }
+    const navigate = useNavigate()
+    let location = useLocation();
+    let from = location.state?.from?.pathname || "/";
     if (loading || googleLoading) {
         return <Loading></Loading>
     }
     if (user || googleUser) {
         console.log(user || googleUser);
+        navigate(from, { replace: true });
     }
     return (
         <div className='flex justify-center items-center h-screen'>
