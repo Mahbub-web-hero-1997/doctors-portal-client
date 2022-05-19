@@ -9,10 +9,12 @@ import Footer from './Pages/Shared/Footer';
 import Appointment from './Pages/Appointment/Appointment';
 import Signup from './Pages/Login/Signup';
 import RequireAuth from './Pages/Login/RequireAuth';
-
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function App() {
   return (
     <div>
+      <ToastContainer></ToastContainer>
       <Navbar></Navbar>
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
