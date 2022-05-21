@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 
 
-const BookingModal = ({ treatment, date, setTreatment }) => {
+const BookingModal = ({ treatment, date, setTreatment, refetch }) => {
     const { _id, name, slots, } = treatment;
     const [user] = useAuthState(auth);
     const treatmentDate = format(date, "PP")
@@ -16,7 +16,7 @@ const BookingModal = ({ treatment, date, setTreatment }) => {
         const bookingData = {
             treatmentId: _id,
             treatmentName: name,
-            treatmentDate: treatmentDate,
+            date: treatmentDate,
             slot,
             patientName: user.displayName,
             patientEmail: user.email,
@@ -35,12 +35,13 @@ const BookingModal = ({ treatment, date, setTreatment }) => {
                 console.log(data);
 
                 if (data.success) {
-                    return toast.success('Your appointment is successful')
+                    toast.success('Your appointment is successful')
                 }
                 else {
                     toast.error('You already appointed!')
                 }
                 setTreatment(null)
+                refetch()
             })
     }
     return (
