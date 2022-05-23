@@ -66,7 +66,7 @@ const BookingModal = ({ treatment, date, setTreatment, refetch }) => {
                     </form>
 
                     <div className="modal-action">
-                        <label for="Booking_Modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                        <label htmlFor="Booking_Modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                     </div>
                 </div>
             </div>
